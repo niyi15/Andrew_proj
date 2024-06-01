@@ -1,0 +1,9 @@
+{
+	"name": "boboADF",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "03cccd91-0140-4ef8-86e8-5329d11d57fd",
+		"tenantId": "f6a64179-2313-439c-94c2-fea72a228b86"
+	}
+}
