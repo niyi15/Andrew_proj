@@ -191,7 +191,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "insert into [dbo].[employeesFinal]\nSELECT * \nFROM [Staging].[Employees] e1\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM (\n        SELECT EmpID, Project, ROW_NUMBER() OVER (PARTITION BY EmpID, Project ORDER BY EmpID) AS rw\n        FROM [Staging].[Employees]\n    ) a\n    WHERE a.rw > 1\n      AND e1.EmpID = a.EmpID\n      AND e1.Project = a.Project\n);\n"
+							"text": "insert into [dbo].[EmployeesFinal]\nselect * from [Staging].[Employees]"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
