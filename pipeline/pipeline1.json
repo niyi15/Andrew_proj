@@ -103,8 +103,8 @@
 								},
 								"sink": {
 									"name": "hire_date",
-									"type": "DateTime",
-									"physicalType": "date"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -127,8 +127,8 @@
 								},
 								"sink": {
 									"name": "dob",
-									"type": "DateTime",
-									"physicalType": "date"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
