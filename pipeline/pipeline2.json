@@ -3,22 +3,43 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Execute Pipeline1",
-				"type": "ExecutePipeline",
+				"name": "CopyBlobToSQL",
+				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
 					"secureInput": false
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"pipeline": {
-						"referenceName": "pipeline1",
-						"type": "PipelineReference"
+					"source": {
+						"type": "DelimitedTextSource"
 					},
-					"waitOnCompletion": true,
-					"parameters": {
-						"servername": "abc"
+					"enableStaging": false
+				}
+			},
+			{
+				"name": "CheckAndInsertData",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CopyBlobToSQL",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
+				],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "usp_CheckAndInsertData"
 				}
 			}
 		],
